@@ -89,7 +89,7 @@ if boton_enviar:
             aciertos = aciertos + 1
 
     # Calculamos la nota sobre 10
-    nota = (aciertos / total) * 10
+    nota = (aciertos / total) * 9
     nota_redondeada = round(nota)
 
     # Mostramos el resultado con colores
