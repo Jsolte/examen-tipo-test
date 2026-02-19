@@ -89,15 +89,25 @@ if boton_enviar:
             aciertos = aciertos + 1
 
     # Calculamos la nota sobre 10
-    nota = (aciertos / total) * 9
-    nota_redondeada = round(nota)
+    nota = (aciertos / total) * 10
+    nota_redondeada = round(nota, 2)
 
     # Mostramos el resultado con colores
     st.divider()
     st.header(f"Resultado final: {nota_redondeada} / 10")
 
-    if nota >= 5:
-        st.success(f"¡Felicidades! Has aprobado con {aciertos} aciertos.")
+    if nota ==10:
+        st.success(f"¡Felicidades! tienes todo bien con {aciertos} aciertos.")
         st.balloons() # ¡Efecto de globos!
+    elif nota >=9 :
+        st.success(f"¡Felicidades! Tienes un sobresaliente con {aciertos} aciertos.")
+        st.balloons() # ¡Efecto de globos!
+    elif nota >=7:
+        st.success(f"¡Felicidades! Has sacado un notable con {aciertos} aciertos.")
+        st.balloons() # ¡Efecto de globos!
+    elif nota >=5:
+        st.success(f"¡Felicidades! Has aprobado con {aciertos} aciertos.Habria que estudiar mas")
+    
     else:
-        st.error(f"Has sacado un {aciertos}. ¡Toca estudiar un poco más!")
+        st.error(f"Has sacado {nota} aciertos. ¡Toca estudiar un poco más!")
+    
