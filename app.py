@@ -52,7 +52,7 @@ with st.form("quiz_form"):
             "Elige una opción:",
             pregunta["opciones"],
             key=pregunta["texto"],
-            index=None   # permite dejar en blanco
+            index=None
         )
 
         respuestas_usuario.append(eleccion)
@@ -84,17 +84,28 @@ if boton_enviar:
             incorrectas.append(preguntas[i]["texto"])
 
     nota = (puntos / total) * 10
-    nota = round(nota, 2)
+    nota_redondeada = round(nota, 2)
 
     st.divider()
-    st.header(f"Resultado final: {nota} / 10")
+    st.header(f"Resultado final: {nota_redondeada} / 10")
 
-    if nota >= 5:
-        st.success("¡Has aprobado!")
+    if nota_redondeada == 10:
+        st.success(f"¡PERFECTO! 🎉 Has sacado un 10.")
+        st.balloons()
+
+    elif nota_redondeada >= 9:
+        st.success(f"¡Sobresaliente! Has sacado {nota_redondeada}.")
+        st.snow()
+
+    elif nota_redondeada >= 7:
+        st.success(f"¡Notable! Has sacado {nota_redondeada}.")
+
+    elif nota_redondeada >= 5:
+        st.success(f"Has aprobado con {nota_redondeada}. Podrías estudiar un poco más.")
+
     else:
-        st.error("Has suspendido.")
+        st.error(f"Has suspendido con {nota_redondeada}. ¡Toca estudiar más!")
 
-    # TAB CON INFORME
     tab1, tab2 = st.tabs(["📊 Resultado", "📝 Informe"])
 
     with tab2:
